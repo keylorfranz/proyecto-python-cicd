@@ -1,5 +1,5 @@
 
-name: CI-CD Python
+name: CI-CD Area Rectangulo
 
 on:
   push:
@@ -44,10 +44,10 @@ jobs:
 
       - name: Generar paquete ZIP
         run: |
-          zip -r proyecto-python.zip main.py requirements.txt
+          zip -r area-rectangulo.zip main.py test_main.py requirements.txt
 
       - name: Publicar artefacto
         uses: actions/upload-artifact@v4
         with:
-          name: proyecto-python
-          path: proyecto-python.zip
+          name: area-rectangulo
+          path: area-rectangulo.zip

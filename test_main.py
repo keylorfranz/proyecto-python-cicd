@@ -1,22 +1,27 @@
 
 import pytest
 
-from main import calcular_promedio, obtener_resultado
+from main import calcular_area
 
 
-def test_calcular_promedio():
-    resultado = calcular_promedio(15, 16, 18)
-    assert resultado == pytest.approx(16.33, abs=0.01)
+def test_calcular_area():
+    assert calcular_area(5, 3) == 15
 
 
-def test_estudiante_aprobado():
-    assert obtener_resultado(15) == "APROBADO"
+def test_area_con_decimales():
+    assert calcular_area(2.5, 4.2) == pytest.approx(10.5)
 
 
-def test_estudiante_desaprobado():
-    assert obtener_resultado(9) == "DESAPROBADO"
-
-
-def test_nota_fuera_de_rango():
+def test_base_cero():
     with pytest.raises(ValueError):
-        calcular_promedio(25, 15, 18)
+        calcular_area(0, 5)
+
+
+def test_base_negativa():
+    with pytest.raises(ValueError):
+        calcular_area(-3, 5)
+
+
+def test_altura_negativa():
+    with pytest.raises(ValueError):
+        calcular_area(5, -2)
